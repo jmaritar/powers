@@ -21,12 +21,15 @@ o ayuda sobre las skills disponibles.
 - `feature-workspace-init` (`/feature-workspace-init`) — inicializa el contexto de una feature
   desde una epica de JIRA de forma conversacional (lee epica, ubica PRD/DERCAS, lista CU,
   valida issues existentes y ofrece crear los faltantes, con confirmacion y rollback).
+- `orchestrator-resume` (`/orchestrator-resume`) — levanta un chat nuevo como Orquestador UM
+  leyendo el estado durable de `C:\PDC\intelligence\knowledge\orchestrator\` (chat desechable).
 
 # Cuando cargar cada steering
 
 Ante una tarea relacionada, carga el steering correspondiente de `./steering/`:
 
 - Entender el pipeline completo PRD/DERCAS -> Spec -> JIRA -> `./steering/00-workflow-prd-to-jira.md`
+- Los dos caminos de trabajo (flujo completo vs flujo fix) -> `./steering/04-flujo-trabajo-um.md`
 - Estimar tareas con story points Fibonacci -> `./steering/01-estimations.md`
 - Defaults de JIRA (sitio, cloudId, project key, tipos, customfields) -> `./steering/02-atlassian-defaults.md`
 - Ubicar PRD/DERCAS en GitBook (organizacion y spaces) -> `./steering/03-gitbook-context.md`
