@@ -18,9 +18,35 @@ de Atlassian, contexto de GitBook, estimaciones (story points Fibonacci) y plant
 **Skills:** comandos, feature-workspace-init
 **MCP Servers:** ninguno incluido (usa tus servidores `atlassian` y `gitbook` de `~/.kiro/settings/mcp.json`)
 
+### auto-flutter
+**Auto Flutter** - Asistente para escribir pruebas automatizadas Appium sobre apps
+Flutter/Android (POS RedPos y Service) con el patron ScreenPlay del proyecto
+`automation-flutter`. Guia paso a paso la escritura de una prueba end-to-end
+(`/flutter-test-author`): locators por content-desc/hint, Interactions, Tasks, Questions,
+datos de `test_data` y markers de Xray. Trae steering con el patron ScreenPlay, locators
+Flutter, estructura del proyecto, ConfigurationManager y ejecucion.
+
+Tambien trae la skill `/flutter-test-runner`, que levanta las pruebas de forma guiada: corre
+un preflight de chequeos previos (adb/device, Appium, poetry, `.env`, APK o app corriendo,
+modulo) con recomendaciones e indica que pasos faltan, y solo cuando el entorno esta listo
+ejecuta el modulo (normal, dashboard en vivo o step-debugger grafico), con troubleshooting
+ante fallos. Se apoya en `automation-flutter/scripts/preflight.py` y `run_suite.bat`.
+
+**Skills:** flutter-test-author, flutter-test-runner
+**MCP Servers:** ninguno (usa el entorno del proyecto: Poetry, Appium, emulador, `.env`)
+
+### um-domain
+**UM Domain** - Conocimiento de NEGOCIO de Ultima Milla (crossdock/padre/hija, GLT/AVON,
+cancelaciones, mapa UM=tms y donde vive cada parte). Steering puro, sin skills: es el
+"cerebro de negocio" liviano que cargan WEB, APP y pruebas. La base de conocimiento viva
+(fichas, worklog, estado del orquestador) vive aparte en `C:\PDC\intelligence\knowledge\`.
+
+**Skills:** app-context (deja una sesion Flutter lista para un fix sin orquestador)
+**MCP Servers:** ninguno
+
 ---
 
-> Proximos powers (roadmap): `vikingo-flutter`, `vikingo-angular`, `vikingo-worklog`.
+> Proximos powers (roadmap): `vikingo-angular`, `vikingo-backend`.
 
 ## Estructura del repositorio
 
@@ -29,13 +55,18 @@ powers/                          # repo = marketplace de powers
 ├── README.md                    # este indice de powers
 ├── CONTRIBUTING.md              # como agregar un power / una skill
 ├── LICENSE
-└── vikingo-workflow/            # un power = una carpeta
-    ├── POWER.md                 # manifiesto (displayName, author, keywords, steering)
-    ├── assets/                  # logo del power (casco Vikingo)
+├── vikingo-workflow/            # un power = una carpeta
+│   ├── POWER.md                 # manifiesto (displayName, author, keywords, steering)
+│   ├── assets/                  # logo del power (casco Vikingo)
+│   ├── skills/
+│   │   ├── comandos/
+│   │   └── feature-workspace-init/
+│   └── steering/                # steering (#...) + plantillas
+└── auto-flutter/                # power de automatizacion Appium/ScreenPlay
+    ├── POWER.md
     ├── skills/
-    │   ├── comandos/
-    │   └── feature-workspace-init/
-    └── steering/                # steering (#...) + plantillas
+    │   └── flutter-test-author/ # SKILL.md + references/
+    └── steering/                # screenplay-pattern, locators-flutter, ...
 ```
 
 Cada power usa el formato **`POWER.md`** (soporta `displayName` y `author`, que es lo que el
